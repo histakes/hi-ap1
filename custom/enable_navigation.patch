@@ -1,0 +1,11 @@
+diff --git a/selfdrive/ui/navi.py b/selfdrive/ui/navi.py
+index 4f2e1a2..b8c9d3e 100644
+--- a/selfdrive/ui/navi.py
++++ b/selfdrive/ui/navi.py
+@@ -30,6 +30,10 @@ class Navi:
+     def __init__(self):
++        # === hi-ap1 v2026: Force navigation enabled ===
++        self.enabled = True
++        cloudlog.warning("hi-ap1: Navigation fully enabled")
++
+         self.map_data = None
