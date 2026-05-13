@@ -1,0 +1,17 @@
+diff --git a/selfdrive/car/tesla/interface.py b/selfdrive/car/tesla/interface.py
+index 8f4c2a1..c9e7f3b 100644
+--- a/selfdrive/car/tesla/interface.py
++++ b/selfdrive/car/tesla/interface.py
+@@ -120,6 +120,20 @@ class CarInterface(CarInterfaceBase):
+     ret = CarInterfaceBase.get_std_params(candidate, fingerprint)
+ 
++    # === hi-ap1 v2026: Force 2015 Model S AP1 fingerprint on EVERY startup ===
++    if "TESLA" in str(candidate).upper() or candidate == CAR.TESLA_MODEL_S:
++        ret.carFingerprint = "TESLA_MODEL_S_AP1_2015"
++        ret.dashcamOnly = False
++        ret.steerControlType = car.CarParams.SteerControlType.torque
++        ret.radarOffCan = True
++        ret.openpilotLongitudinalControl = False  # AP1 uses regen only unless iBooster
++        cloudlog.warning("hi-ap1: Forced 2015 Model S AP1 fingerprint - car will now talk")
++
+     return ret
