@@ -1,0 +1,13 @@
+diff --git a/selfdrive/monitoring/driver_monitoring.py b/selfdrive/monitoring/driver_monitoring.py
+index 3e2f1c4..a1b9d2e 100644
+--- a/selfdrive/monitoring/driver_monitoring.py
++++ b/selfdrive/monitoring/driver_monitoring.py
+@@ -45,6 +45,12 @@ class DriverMonitoring:
+     def __init__(self):
++        # === hi-ap1 v2026: Completely disable driver monitoring ===
++        self.enabled = False
++        self.face_detected = True
++        self.driver_distraction = 0.0
++        cloudlog.warning("hi-ap1: Driver monitoring FULLY DISABLED")
++
+         self.driver_distraction_filter = FirstOrderFilter(0.0, 0.1, DT_MDL)
